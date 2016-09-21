@@ -1,0 +1,1 @@
+java -Dspring.profiles.active=docker -jar /usr/src/app/user-catalog-web/target/userCatalogRunner.jar

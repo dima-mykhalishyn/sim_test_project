@@ -1,0 +1,46 @@
+# Spring properties
+spring:
+  profiles.active: development
+  application:
+    name: user-catalog-web-service
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    max-wait: 10000
+    max-active: 100
+    max-idle: 30
+    test-on-borrow: true
+    test-on-return: true
+    test-while-idle: true
+    validation-query: select 1
+    remove-abandoned: true
+    remove-abandoned-timeout: 120
+    min-evictableIdle-time-millis: 300000
+    time-between-eviction-runs-millis: 300000
+
+# HTTP Server
+server:
+  port: 8080   # HTTP (Tomcat) port
+  contextPath: /user-catalog
+
+#Logging file
+logging:
+  file: user-catalog.log
+
+# =============================================================================
+--- # dev config
+spring:
+  profiles: development
+  datasource:
+        url: jdbc:mysql://localhost:3307/user_catalog?useUnicode=true&characterEncoding=utf8
+        username: dude
+        password: dude
+
+--- # docker environment config
+spring:
+  profiles: docker
+  datasource:
+          url: jdbc:mysql://uc_mysql:3306/user_catalog?useUnicode=true&characterEncoding=utf8
+          username: dude
+          password: dude
+
+

@@ -1,0 +1,76 @@
+version: '2'
+services:
+
+# maven install container
+ uc_maven_install:
+  build:
+   context: .
+   dockerfile: ./docker/mvn/Dockerfile.build
+  image: user_catalog_boot
+
+# MySQL container
+ uc_mysql:
+  image: mysql
+  environment:
+   - MYSQL_ROOT_PASSWORD=user-catalog
+  ports:
+   - "3307:3306"
+
+# container for initial DB schema creation
+ uc_create_db_schema:
+  image: mysql
+  command:
+     sh -c 'while ! /tmp/wait-for-it.sh uc_mysql:3306 -t 30; do echo "waiting for MySQL container..."; sleep 1; done; exec mysql -huc_mysql -P3306 -uroot -puser-catalog < /tmp/mysql/init.sql'
+  volumes:
+   - ./docker/mysql:/tmp/mysql/
+   - ./wait-for-it.sh:/tmp/wait-for-it.sh
+  links:
+   - uc_mysql
+  depends_on:
+   - uc_mysql
+
+ # starter 1
+ uc_application_start1:
+    image: user_catalog_boot
+    command:
+      sh -c 'while ! /tmp/wait-for-it.sh uc_mysql:3306 -t 30; do echo "waiting for MySQL container..."; sleep 1; done; /usr/src/app/docker/startup.sh;'
+    ports:
+      - "8091:8080"
+    volumes:
+      - ./wait-for-it.sh:/tmp/wait-for-it.sh
+    links:
+      - uc_mysql
+    depends_on:
+      - uc_create_db_schema
+      - uc_maven_install
+
+ # starter 2
+ uc_application_start2:
+    image: user_catalog_boot
+    command:
+      sh -c 'while ! /tmp/wait-for-it.sh uc_mysql:3306 -t 30; do echo "waiting for MySQL container..."; sleep 1; done; /usr/src/app/docker/startup.sh;'
+    ports:
+      - "8092:8080"
+    volumes:
+      - ./wait-for-it.sh:/tmp/wait-for-it.sh
+    links:
+      - uc_mysql
+    depends_on:
+      - uc_create_db_schema
+      - uc_maven_install
+
+
+ # starter 3
+ uc_application_start3:
+    image: user_catalog_boot
+    command:
+      sh -c 'while ! /tmp/wait-for-it.sh uc_mysql:3306 -t 30; do echo "waiting for MySQL container..."; sleep 1; done; /usr/src/app/docker/startup.sh;'
+    ports:
+      - "8093:8080"
+    volumes:
+      - ./wait-for-it.sh:/tmp/wait-for-it.sh
+    links:
+      - uc_mysql
+    depends_on:
+      - uc_create_db_schema
+      - uc_maven_install
