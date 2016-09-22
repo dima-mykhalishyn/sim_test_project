@@ -12,7 +12,7 @@
 ## Solution:
 
 ### Stack of Technologies:
-Java 8, Maven, Spring Boot, Hibernate, MySQL, Docker, Swagger, Apache HTTP Cleint (For Client Logic)
+Java 8, Maven, Spring Boot, Hibernate, MySQL, Docker, Swagger, Apache HTTP Client (For Client Logic)
 
 ### How to Start:
 
