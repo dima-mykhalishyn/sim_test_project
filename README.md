@@ -2,8 +2,6 @@
 
 ## Project Requirements:
 
-Your goal will be to create a skeleton of a resilient user catalog service and test client. This service provides a REST interface that allows to PUT and GET users. A user consists of a username, a first name and a last name.
-
 > Your goal will be to create a skeleton of a resilient user catalog service and test client. This service provides a REST interface that allows to PUT and GET users. A user consists of a username, a first name and a last name.
 
 > Your task is to also write a command-line program that runs over a relatively long time (say, 5 minutes) doing some predefined set of operations (like, adding a number of users, then retrieving them, etc.).
@@ -14,7 +12,7 @@ Your goal will be to create a skeleton of a resilient user catalog service and t
 ## Solution:
 
 ### Stack of Technologies:
-Java 8, Maven, Spring Boot, Hibernate, MySQL, Docker, Swagger, Apache HTTP Cleint (For Client Logic)
+Java 8, Maven, Spring Boot, Hibernate, MySQL, Docker, Swagger, Apache HTTP Client (For Client Logic)
 
 ### How to Start:
 
@@ -56,7 +54,7 @@ NOTE: you could also run docker container as Daemon using '-d' attribute.
 #### Start the Client
 You should build the client app using Maven:
 ```
-maven clean package
+mvn clean package
 ```
 then you just need start the client with list of hosts(and ports if needed):
 ```
