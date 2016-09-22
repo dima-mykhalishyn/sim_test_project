@@ -2,8 +2,6 @@
 
 ## Project Requirements:
 
-Your goal will be to create a skeleton of a resilient user catalog service and test client. This service provides a REST interface that allows to PUT and GET users. A user consists of a username, a first name and a last name.
-
 > Your goal will be to create a skeleton of a resilient user catalog service and test client. This service provides a REST interface that allows to PUT and GET users. A user consists of a username, a first name and a last name.
 
 > Your task is to also write a command-line program that runs over a relatively long time (say, 5 minutes) doing some predefined set of operations (like, adding a number of users, then retrieving them, etc.).
