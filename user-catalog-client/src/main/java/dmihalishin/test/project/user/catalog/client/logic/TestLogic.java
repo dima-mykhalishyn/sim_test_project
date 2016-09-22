@@ -72,6 +72,7 @@ public class TestLogic {
 							this.createUser(nextHost, dto);
 						}
 					} catch (SocketTimeoutException e) {
+						// Here could be Failover logic, something like retry, but for test purpose it's not necessary
 						LOGGER.info("SocketTimeoutException for {}: {}", nextHost, e.getMessage());
 					}
 				} catch (Exception e) {
@@ -95,6 +96,7 @@ public class TestLogic {
 				LOGGER.info("Save User in {} with username {} and got ID {}", url, dto.getUsername(), response.getResponse().getId());
 			});
 		} catch (IOException e) {
+			// Here could be Failover logic, something like retry, but for test purpose it's not necessary
 			LOGGER.info("Create User {} : {}", url, e.getMessage());
 		}
 	}
