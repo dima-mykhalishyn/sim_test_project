@@ -54,7 +54,7 @@ NOTE: you could also run docker container as Daemon using '-d' attribute.
 #### Start the Client
 You should build the client app using Maven:
 ```
-maven clean package
+mvn clean package
 ```
 then you just need start the client with list of hosts(and ports if needed):
 ```
